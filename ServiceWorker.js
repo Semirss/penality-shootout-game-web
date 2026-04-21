@@ -1,4 +1,4 @@
-const cacheName = "Gomida-penaliity shootout game-1.0";
+const cacheName = "Gomida-penaliity shootout game-2.0";
 const contentToCache = [
     "Build/penality shootout game web.loader.js",
     "Build/penality shootout game web.framework.js.unityweb",
