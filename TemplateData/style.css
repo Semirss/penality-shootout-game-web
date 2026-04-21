@@ -1,38 +1,8 @@
-body { padding: 0; margin: 0; background: #0f172a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
-#unity-container { position: fixed; width: 100%; height: 100%; z-index: 1; top: 0; left: 0; }
-#unity-canvas { width: 100%; height: 100%; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); }
-
-#unity-loading-bar { 
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); 
-    display: none; flex-direction: column; align-items: center; justify-content: center;
-    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px);
-    padding: 50px 40px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255,255,255,0.1); width: 85%; max-width: 500px;
-    z-index: 10;
-}
-
-#game-title {
-    color: #ffffff; margin: 0 0 25px 0; font-size: 32px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    text-align: center; background: linear-gradient(90deg, #4ade80, #3b82f6);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-
-#unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center; margin-bottom: 30px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1)); }
-
-#unity-progress-bar-empty { 
-    width: 100%; height: 14px; background: rgba(0,0,0,0.6); border-radius: 12px; overflow: hidden;
-    position: relative; border: 1px solid rgba(255,255,255,0.1); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
-}
-
-#unity-progress-bar-full { 
-    width: 0%; height: 100%; background: linear-gradient(90deg, #4ade80, #3b82f6); 
-    border-radius: 12px; transition: width 0.2s ease-out; box-shadow: 0 0 15px rgba(74, 222, 128, 0.6);
-}
-
-#download-progress-text {
-    color: #cbd5e1; margin-top: 20px; font-size: 15px; font-weight: 600; text-align: center;
-    font-family: 'Courier New', Courier, monospace; letter-spacing: 0.5px;
-}
-
-#unity-warning { position: absolute; left: 50%; top: 5%; transform: translateX(-50%); background: white; padding: 10px; display: none; border-radius: 8px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+body { padding: 0; margin: 0 }
+#unity-container { position: fixed; width: 100%; height: 100%; }
+#unity-canvas { width: 100%; height: 100%; background: #231F20 }
+#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
+#unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center }
+#unity-progress-bar-empty { margin-left: auto; margin-right: auto; width: 141px; height: 18px; margin-top: 10px; background: url('progress-bar-empty-dark.png') no-repeat center }
+#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
+#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
