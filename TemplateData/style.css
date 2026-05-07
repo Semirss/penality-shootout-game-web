@@ -1,24 +1,23 @@
 body { padding: 0; margin: 0; background: #0f172a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
 #unity-container { position: fixed; width: 100%; height: 100%; z-index: 1; top: 0; left: 0; }
-#unity-canvas { width: 100%; height: 100%; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); }
+#unity-canvas { width: 100%; height: 100%; background-image: url("/backimage.png"); background-size: cover;background-repeat: no-repeat; }
 
 #unity-loading-bar { 
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); 
     display: none; flex-direction: column; align-items: center; justify-content: center;
-    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px);
-    padding: 50px 40px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255,255,255,0.1); width: 85%; max-width: 500px;
+    
+    padding: 50px 40px; 
+ width: 85%; max-width: 500px;
     z-index: 10;
 }
 
 #game-title {
     color: #ffffff; margin: 0 0 25px 0; font-size: 32px; font-weight: 800;
     text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    text-align: center; background: linear-gradient(90deg, #4ade80, #3b82f6);
+    text-align: center; background: linear-gradient(90deg, #ffffff, #ffffff);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-#unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center; margin-bottom: 30px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1)); }
 
 #unity-progress-bar-empty { 
     width: 100%; height: 14px; background: rgba(0,0,0,0.6); border-radius: 12px; overflow: hidden;
@@ -35,4 +34,4 @@ body { padding: 0; margin: 0; background: #0f172a; font-family: 'Segoe UI', Taho
     font-family: 'Courier New', Courier, monospace; letter-spacing: 0.5px;
 }
 
-#unity-warning { position: absolute; left: 50%; top: 5%; transform: translateX(-50%); background: white; padding: 10px; display: none; border-radius: 8px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+
