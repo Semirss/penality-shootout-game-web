@@ -22,14 +22,35 @@ self.addEventListener('fetch', function (e) {
     e.respondWith((async function () {
       let response = await caches.match(e.request);
       console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
-      if (response) { return response; }
-
-      response = await fetch(e.request);
-      if (e.request.method === 'GET') {
-        const cache = await caches.open(cacheName);
-        console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-        cache.put(e.request, response.clone());
+      
+      if (!response) {
+          response = await fetch(e.request);
+          if (e.request.method === 'GET') {
+            const cache = await caches.open(cacheName);
+            console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
+            cache.put(e.request, response.clone());
+          }
       }
+      
+      if (e.request.url.match(/\.unityweb$/)) {
+          const headers = new Headers(response.headers);
+          if (!headers.get('Content-Encoding')) {
+              headers.set('Content-Encoding', 'br');
+          }
+          if (e.request.url.match(/\.wasm\.unityweb$/)) {
+              headers.set('Content-Type', 'application/wasm');
+          } else if (e.request.url.match(/\.framework\.js\.unityweb$/)) {
+              headers.set('Content-Type', 'application/javascript');
+          } else {
+              headers.set('Content-Type', 'application/octet-stream');
+          }
+          return new Response(response.body, {
+              status: response.status,
+              statusText: response.statusText,
+              headers: headers
+          });
+      }
+
       return response;
     })());
 });
