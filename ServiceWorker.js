@@ -1,9 +1,9 @@
 const cacheName = "Gomida-penaliity shootout game-2.0";
 const contentToCache = [
-    "Build/penality shootout game web.loader.js",
-    "Build/penality shootout game web.framework.js.unityweb",
-    "Build/penality shootout game web.data.unityweb",
-    "Build/penality shootout game web.wasm.unityweb",
+    "Build/161afd98609e3d33ca3c6ada5e6ae43f.loader.js",
+    "Build/1dc4aab169deffef1d0cbf49bdae8e20.framework.js.unityweb",
+    "Build/77c45c3a99c286fe9c178c76fad33f0d.data.unityweb",
+    "Build/b36b60e4ad7054c9b4b203c9b68224ac.wasm.unityweb",
     "TemplateData/style.css"
 
 ];
@@ -25,9 +25,11 @@ self.addEventListener('fetch', function (e) {
       if (response) { return response; }
 
       response = await fetch(e.request);
-      const cache = await caches.open(cacheName);
-      console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-      cache.put(e.request, response.clone());
+      if (e.request.method === 'GET') {
+        const cache = await caches.open(cacheName);
+        console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
+        cache.put(e.request, response.clone());
+      }
       return response;
     })());
 });
