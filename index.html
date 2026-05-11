@@ -1,207 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
-    <title>Coming Soon | Penalty Shootout Game</title>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | penaliity shootout game</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="manifest" href="manifest.webmanifest">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Outfit', sans-serif;
-            background-image: url("photo_2026-05-08_10-35-56.jpg");
-            background-size: cover;
-            background-position: top center;
-            background-repeat: no-repeat;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            overflow: hidden;
-            background-color: #0f172a;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.15);
-            z-index: 1;
-        }
-
-        .content-container {
-            position: relative;
-            z-index: 2;
-            width: 85%;
-            max-width: 500px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 35px 20px;
-            text-align: center;
-            margin-bottom: calc(40px + env(safe-area-inset-bottom));
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            color: #ffffff;
-            margin: 0 0 10px 0;
-            font-size: 42px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #4ade80, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 20px rgba(74, 222, 128, 0.3);
-        }
-
-        p.subtitle {
-            color: #cbd5e1;
-            font-size: 15px;
-            margin-bottom: 30px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-
-        .countdown-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .time-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 12px 10px;
-            border-radius: 16px;
-            min-width: 65px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .time-box:hover {
-            transform: translateY(-2px);
-            border-color: rgba(74, 222, 128, 0.3);
-        }
-
-        .time-value {
-            color: #ffffff;
-            font-size: 28px;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 5px;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .time-label {
-            color: #94a3b8;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-        
-        @media (max-width: 380px) {
-            .content-container { padding: 25px 15px; width: 90%; }
-            h1 { font-size: 32px; }
-            .time-box { min-width: 55px; padding: 10px 5px; }
-            .time-value { font-size: 22px; }
-            .countdown-wrapper { gap: 8px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="overlay"></div>
-    <div class="content-container">
-        <h1>Coming Soon</h1>
-        <p class="subtitle">The ultimate penalty shootout experience is almost here.</p>
-        
-        <div class="countdown-wrapper">
-            <div class="time-box">
-                <span class="time-value" id="days">00</span>
-                <span class="time-label">Days</span>
-            </div>
-            <div class="time-box">
-                <span class="time-value" id="hours">00</span>
-                <span class="time-label">Hours</span>
-            </div>
-            <div class="time-box">
-                <span class="time-value" id="minutes">00</span>
-                <span class="time-label">Mins</span>
-            </div>
-            <div class="time-box">
-                <span class="time-value" id="seconds">00</span>
-                <span class="time-label">Secs</span>
-            </div>
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <!-- <h1 id="game-title">Penalty Shootout Game</h1> -->
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
         </div>
+        <div id="download-progress-text">Calculating size...</div>
+      </div>
+      <div id="unity-warning"> </div>
     </div>
-
     <script>
-        // Telegram Web App Initialization
-        if (window.Telegram && window.Telegram.WebApp) {
-            window.Telegram.WebApp.ready();
-            window.Telegram.WebApp.expand();
-            if (window.Telegram.WebApp.disableVerticalSwipes) {
-                window.Telegram.WebApp.disableVerticalSwipes();
-            }
-            if (window.Telegram.WebApp.requestFullscreen) {
-                window.Telegram.WebApp.requestFullscreen();
-            }
+      if (window.Telegram && window.Telegram.WebApp) {
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.expand();
+        if (window.Telegram.WebApp.disableVerticalSwipes) {
+          window.Telegram.WebApp.disableVerticalSwipes();
         }
-
-        // ==========================================
-        // SET YOUR LAUNCH DATE HERE
-        // Format: "YYYY-MM-DDTHH:MM:SS"
-        // Example: "2026-06-01T12:00:00"
-        // ==========================================
-        const launchDate = new Date("2026-05-16T00:00:00").getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
-
-            if (distance <= 0) {
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        if (window.Telegram.WebApp.requestFullscreen) {
+          window.Telegram.WebApp.requestFullscreen();
         }
+      }
 
-        // Update immediately, then every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+      window.addEventListener("load", function () {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("ServiceWorker.js");
+        }
+      });
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var warningBanner = document.querySelector("#unity-warning");
+      var progressText = document.querySelector("#download-progress-text");
+
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/161afd98609e3d33ca3c6ada5e6ae43f.loader.js";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/77c45c3a99c286fe9c178c76fad33f0d.data.unityweb",
+        frameworkUrl: buildUrl + "/1dc4aab169deffef1d0cbf49bdae8e20.framework.js.unityweb",
+        codeUrl: buildUrl + "/b36b60e4ad7054c9b4b203c9b68224ac.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Gomida",
+        productName: "penaliity shootout game",
+        productVersion: "1.0",
+        showBanner: unityShowBanner,
+        // errorHandler: function(err, url, line) {
+        //    alert("error " + err + " occurred at line " + line);
+        //    // Return 'true' if you handled this error and don't want Unity
+        //    // to process it further, 'false' otherwise.
+        //    return true;
+        // },
+      };
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+
+      loadingBar.style.display = "flex";
+
+      var totalSizeMB = 24.9; // Base fallback size
+      var urlsToFetch = [config.dataUrl, config.codeUrl];
+      
+      Promise.all(urlsToFetch.map(url => fetch(url, { method: 'HEAD' })))
+        .then(responses => {
+          let bytes = 0;
+          responses.forEach(res => {
+            let len = res.headers.get('content-length');
+            if (len) bytes += parseInt(len, 10);
+          });
+          if (bytes > 0) totalSizeMB = bytes / (1024 * 1024);
+        }).catch(e => console.log("Failed to fetch HEAD, using fallback size.", e));
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+          if (totalSizeMB > 0) {
+            let currentMB = (progress * totalSizeMB).toFixed(1);
+            progressText.innerText = `Downloading: ${currentMB} MB / ${totalSizeMB.toFixed(1)} MB (${Math.round(progress * 100)}%)`;
+          } else {
+            progressText.innerText = `Loading... ${Math.round(progress * 100)}%`;
+          }
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
     </script>
-</body>
+  </body>
 </html>
