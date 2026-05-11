@@ -1,6 +1,7 @@
 body { padding: 0; margin: 0; background: #0f172a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
 #unity-container { position: fixed; width: 100%; height: 100%; z-index: 1; top: 0; left: 0; }
-#unity-canvas { width: 100%; height: 100%; background-image: url("/photo_2026-05-08_10-35-56.jpg"); background-size: cover;background-repeat: no-repeat; }
+#unity-canvas { width: 100%; height: 100%; background-image: url("/Football_Finals_KV_MAH_01_\(9x16\)_AM.png"); background-size: cover;             height: 100vh;
+            width: 100vw; background-position: top center;background-repeat: no-repeat; }
 
 #unity-loading-bar { 
     position: absolute; left: 50%; bottom: 30px; bottom: calc(30px + env(safe-area-inset-bottom)); transform: translateX(-50%); 
