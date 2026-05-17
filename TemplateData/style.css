@@ -1,8 +1,42 @@
-body { padding: 0; margin: 0 }
-#unity-container { position: fixed; width: 100%; height: 100%; }
-#unity-canvas { width: 100%; height: 100%; background: #FFFFFF }
-#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
-#unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center }
-#unity-progress-bar-empty { margin-left: auto; margin-right: auto; width: 141px; height: 18px; margin-top: 10px; background: url('progress-bar-empty-dark.png') no-repeat center }
-#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
-#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+body { padding: 0; margin: 0; background: #0f172a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
+#unity-container { position: fixed; width: 100%; height: 100%; z-index: 1; top: 0; left: 0; }
+#unity-canvas { width: 100%; height: 100%; background-image: url("/Football_Finals_KV_MAH_01_\(9x16\)_AM.png"); background-size: cover;             height: 100vh;
+            width: 100vw; background-position: top center;background-repeat: no-repeat; }
+
+#unity-loading-bar { 
+    position: absolute; left: 50%; bottom: 30px; bottom: calc(30px + env(safe-area-inset-bottom)); transform: translateX(-50%); 
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+    padding: 20px 40px; 
+    width: 85%; max-width: 500px;
+    z-index: 10;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#game-title {
+    color: #ffffff; margin: 0 0 25px 0; font-size: 32px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    text-align: center; background: linear-gradient(90deg, #ffffff, #ffffff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+
+#unity-progress-bar-empty { 
+    width: 100%; height: 14px; background: rgba(0,0,0,0.6); border-radius: 12px; overflow: hidden;
+    position: relative; border: 1px solid rgba(255,255,255,0.1); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}
+
+#unity-progress-bar-full { 
+    width: 0%; height: 100%; background: linear-gradient(90deg, #4ade80, #3b82f6); 
+    border-radius: 12px; transition: width 0.2s ease-out; box-shadow: 0 0 15px rgba(74, 222, 128, 0.6);
+}
+
+#download-progress-text {
+    color: #cbd5e1; margin-top: 20px; font-size: 15px; font-weight: 600; text-align: center;
+    font-family: 'Courier New', Courier, monospace; letter-spacing: 0.5px;
+}
+
+
