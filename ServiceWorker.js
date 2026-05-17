@@ -1,9 +1,9 @@
 const cacheName = "Gomida-penaliity shootout game-2.0";
 const contentToCache = [
-    "Build/e021caee000b525017e265565600b691.loader.js",
+    "Build/f8431d7c1a241678628151b0fa9b4bef.loader.js",
     "Build/7dd3f3d120db43d6fc8fbd844c709cf3.framework.js.unityweb",
-    "Build/93ddea961d9b36481a4dded0b67e52b3.data.unityweb",
-    "Build/97a9ede7ba6b4e7175ac8307cf1c9eac.wasm.unityweb",
+    "Build/75009adae08c7c6fd024b4c95817169f.data.unityweb",
+    "Build/11e8e4ebbaf676a7a48f4c55834fa5f6.wasm.unityweb",
     "TemplateData/style.css"
 
 ];
