@@ -3,21 +3,18 @@
     {
       "source": "/Build/(.*\\.data\\.unityweb)",
       "headers": [
-        { "key": "Content-Encoding", "value": "br" },
         { "key": "Content-Type", "value": "application/octet-stream" }
       ]
     },
     {
       "source": "/Build/(.*\\.wasm\\.unityweb)",
       "headers": [
-        { "key": "Content-Encoding", "value": "br" },
         { "key": "Content-Type", "value": "application/wasm" }
       ]
     },
     {
       "source": "/Build/(.*\\.framework\\.js\\.unityweb)",
       "headers": [
-        { "key": "Content-Encoding", "value": "br" },
         { "key": "Content-Type", "value": "application/javascript" }
       ]
     }
