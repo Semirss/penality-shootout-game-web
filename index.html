@@ -25,16 +25,16 @@
     <div id="unity-warning"> </div>
   </div>
   <script>
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.expand();
-      if (window.Telegram.WebApp.disableVerticalSwipes) {
-        window.Telegram.WebApp.disableVerticalSwipes();
-      }
-      if (window.Telegram.WebApp.requestFullscreen) {
-        window.Telegram.WebApp.requestFullscreen();
-      }
-    }
+    // if (window.Telegram && window.Telegram.WebApp) {
+    //   window.Telegram.WebApp.ready();
+    //   window.Telegram.WebApp.expand();
+    //   if (window.Telegram.WebApp.disableVerticalSwipes) {
+    //     window.Telegram.WebApp.disableVerticalSwipes();
+    //   }
+    //   if (window.Telegram.WebApp.requestFullscreen) {
+    //     window.Telegram.WebApp.requestFullscreen();
+    //   }
+    // }
 
     window.addEventListener("load", function () {
       if ("serviceWorker" in navigator) {
@@ -74,12 +74,12 @@
     }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/0b242c670c2598576375b54dc4ea5ef2.loader.js";
+      var loaderUrl = buildUrl + "/429bd6742e418f3b61e17275690abe04.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/4dc23fda5dbfe7ea36708465d9862412.data.unityweb",
+        dataUrl: buildUrl + "/b12166fff5086f565426a1e4a354fad4.data.unityweb",
         frameworkUrl: buildUrl + "/7dd3f3d120db43d6fc8fbd844c709cf3.framework.js.unityweb",
-        codeUrl: buildUrl + "/a7af7860ba52d3181c0267739cc8cf77.wasm.unityweb",
+        codeUrl: buildUrl + "/9f5a537fa05c5468b580ce8dd2e68bc7.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Gomida",
         productName: "penaliity shootout game",
